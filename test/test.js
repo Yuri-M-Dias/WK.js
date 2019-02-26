@@ -11,7 +11,7 @@ describe('Client', function() {
     it('empty should work', function() {
       const client = new WK.Client();
       let resultingURI = client.getWKURI();
-      assert.equal(resultingURI, 'https://api.wanikani.com/v2/');
+      assert.equal(resultingURI, 'https://api.wanikani.com/v2');
       const resultingOptions = client.getOptions();
     });
 
@@ -39,6 +39,21 @@ describe('Client', function() {
     it('should add 2+2', function() {
       const client = new WK.Client();
       assert.equal(client.add(2, 2), 4);
+    });
+
+  });
+
+  describe('request', function() {
+
+    it('simple request', function() {
+        const client = new WK.Client();
+        client.simple()
+        .then(function(result){
+            console.log(result);
+        })
+        .catch(function(err){
+            console.log(err);
+        });
     });
 
   });
